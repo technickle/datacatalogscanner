@@ -1,0 +1,38 @@
+<head>
+  <title>Socrata Data Catalog Tool</title>
+  <!-- Externally Hosted References -->
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css"></link>
+
+  <!-- Locally Hosted References -->
+  <script type="text/javascript" src="/scripts/sdc.js"></script>
+</head>
+<body>
+  <div class="user_input">
+    <form action="javascript:void(0);">
+      <input id="dc_url" type="text" placeholder="enter a data.json URL here..." value="data.json" />
+      <input id="dc_process" type="submit" value="Get Catalog" />
+      <input id="dc_scan" type="button" value="Scan Catalog" />
+    </form>
+  </div>
+  <div id="dc_result" width="98%">
+  </div>
+
+  <script>
+    // needs to be moved to a controller section
+    // $("#dc_url").keypress(function(e) {
+    //   console.log("keypress")
+    //   if (e.keycode==13)
+    //     $("#dc_process").click();
+    // });
+    $("#dc_process").click(function() {
+      console.log("button clicked")
+      processCatalog($("#dc_url").val());
+    });
+    $("#dc_scan").click(function(obj) {
+      scanSocrataCatalogEntries($("#dc_table"))
+    });
+
+  </script>
+</body>
